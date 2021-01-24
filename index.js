@@ -17,6 +17,15 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
+app.get('/products', async (req, res) => {
+  const products = await Product.find({})
+  res.render('products/index.ejs', { products })
+})
+
+app.get('*', (req, res) => {
+  res.send('Hello World!');
+})
+
 app.listen(port, () => {
   console.log(`App is listening on port ${port}.`);
 })

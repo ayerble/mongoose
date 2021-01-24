@@ -8,11 +8,14 @@
    </head>
 
    <body>
+      <a href="/products">go back to products list</a>
       <h1><%= product.name %></h1>
       <ul>
          <li>Price: <%= product.price %></li>
          <li>Category: <%= product.category  %> </li>
       </ul>
+
+      <a href="/products/<%=product.id%>/edit">edit</a>
    </body>
 
 </html>

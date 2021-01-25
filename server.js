@@ -52,13 +52,13 @@ app.get('/products/:id/edit', async (req, res) => {
 })
 
 app.put('/products/:id', async (req, res) => {
-
-  console.log(req.body)
-  res.send('PUT!')
+  const { id } = req.params;
+  const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true, new: true })
+  res.redirect(`/products/${product._id}`)
 })
 
 app.get('*', (req, res) => {
-  res.send('Hello World!');
+  res.send('Unknown page, click <a href="/">here</a> to go back to home');
 })
 
 app.listen(port, () => {
